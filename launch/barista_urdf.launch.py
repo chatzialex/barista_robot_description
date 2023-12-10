@@ -1,5 +1,5 @@
 import os
-from ament_index_python.packages import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory, get_package_prefix
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition
@@ -69,6 +69,21 @@ def generate_launch_description():
   )
 
   # Gazebo
+  gazebo_models_path = os.path.join("barista_robot_description", 'meshes')
+  install_dir = get_package_prefix("barista_robot_description")
+  if 'GAZEBO_MODEL_PATH' in os.environ:
+    os.environ['GAZEBO_MODEL_PATH'] = os.environ['GAZEBO_MODEL_PATH'] + \
+      ':' + install_dir + '/share' + ':' + gazebo_models_path
+  else:
+    os.environ['GAZEBO_MODEL_PATH'] = install_dir + \
+      "/share" + ':' + gazebo_models_path
+    
+  if 'GAZEBO_PLUGIN_PATH' in os.environ:
+    os.environ['GAZEBO_PLUGIN_PATH'] = os.environ['GAZEBO_PLUGIN_PATH'] + \
+      ':' + install_dir + '/lib'
+  else:
+    os.environ['GAZEBO_PLUGIN_PATH'] = install_dir + '/lib'
+
   gazebo_launch_args = {
     'verbose': 'false',
     'pause': 'false',
