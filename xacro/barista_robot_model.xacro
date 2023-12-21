@@ -82,7 +82,7 @@
   <xacro:chassis name="${prefix}chassis" color="${color}"/>
 
   <joint name="${prefix}chassis_to_left_wheel" type="continuous">  
-    <origin rpy="0 -1.57 0" xyz="-0.150 0.0 -0.0775"/>
+    <origin rpy="-1.57 0 0" xyz="0.0 0.150 -0.0775"/>
     <parent link="${prefix}chassis"/>
     <child link="${prefix}left_wheel"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
@@ -93,7 +93,7 @@
   <xacro:wheel wheel_name="${prefix}left_wheel" />
 
   <joint name="${prefix}chassis_to_right_wheel" type="continuous">  
-    <origin rpy="0 -1.57 0" xyz="0.150 0.0 -0.0775"/>
+    <origin rpy="-1.57 0 0" xyz="0.0 -0.150 -0.0775"/>
     <parent link="${prefix}chassis"/>
     <child link="${prefix}right_wheel"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
@@ -105,7 +105,7 @@
 
   <!-- Caster Wheel Front -->
   <joint name="${prefix}front_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0.0 0.130 -0.0775" />
+    <origin rpy="0 0 0" xyz="0.130 0.0 -0.0775" />
     <parent link="${prefix}chassis" />
     <child link="${prefix}front_yaw_link" />
     <axis xyz="0 0 1" />
@@ -204,7 +204,7 @@
 
   <!-- Caster Wheel Back -->
   <joint name="${prefix}back_yaw_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0.0 -0.130 -0.0775" />
+    <origin rpy="0 0 0" xyz="-0.130 0.0 -0.0775" />
     <parent link="${prefix}chassis" />
     <child link="${prefix}back_yaw_link" />
     <axis xyz="0 0 1" />
@@ -310,7 +310,7 @@
   <xacro:cup_holder_tray cup_holder_tray_name="${prefix}cup_holder_tray" color="${color}"/>
 
   <joint name="${prefix}chassis_to_standoff_rod_back_left" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.140 -0.030 0.1875" />
+    <origin rpy="0 0 0" xyz="-0.030 0.140 0.1875" />
     <parent link="${prefix}chassis"/>
     <child link="${prefix}standoff_rod_back_left"/>
   </joint>
@@ -318,7 +318,7 @@
   <xacro:standoff standoff_name="${prefix}standoff_rod_back_left"/>
 
   <joint name="${prefix}chassis_to_standoff_rod_back_right" type="fixed">
-    <origin rpy="0 0 0" xyz="0.140 -0.030 0.1875" />
+    <origin rpy="0 0 0" xyz="-0.030 -0.140 0.1875" />
     <parent link="${prefix}chassis"/>
     <child link="${prefix}standoff_rod_back_right"/>
   </joint>
@@ -326,7 +326,7 @@
   <xacro:standoff standoff_name="${prefix}standoff_rod_back_right"/>
 
   <joint name="${prefix}chassis_to_standoff_rod_front_left" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.140 0.030 0.1875"/>
+    <origin rpy="0 0 0" xyz="0.030 0.140 0.1875"/>
     <parent link="${prefix}chassis"/>
     <child link="${prefix}standoff_rod_front_left"/>
   </joint>
@@ -334,7 +334,7 @@
   <xacro:standoff standoff_name="${prefix}standoff_rod_front_left"/>  
 
   <joint name="${prefix}chassis_to_standoff_rod_front_right" type="fixed">
-    <origin rpy="0 0 0" xyz="0.140 0.030 0.1875"/>
+    <origin rpy="0 0 0" xyz="0.030 -0.140 0.1875"/>
     <parent link="${prefix}chassis"/>
     <child link="${prefix}standoff_rod_front_right"/>
   </joint>
@@ -350,13 +350,13 @@
 
   <link name="${prefix}laser_scan_link">
     <visual>
-      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://barista_robot_description/meshes/hokuyo_uam05lp.dae" scale="1.0 1.0 1.0"/>
       </geometry>
     </visual>
     <collision>
-      <origin rpy="0 0 1.57" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <!--from datasheet-->
         <box size="0.08 0.08 0.095"/>
@@ -372,7 +372,7 @@
   </link>
 
   <joint name="${prefix}laser_scan_link_to_laser_scan_frame" type="fixed">
-    <origin rpy="0 0 1.57" xyz="0 0 0.08"/>
+    <origin rpy="0 0 0" xyz="0 0 0.08"/>
     <parent link="${prefix}laser_scan_link"/>
     <child link="${prefix}laser_scan_frame"/>
   </joint>
