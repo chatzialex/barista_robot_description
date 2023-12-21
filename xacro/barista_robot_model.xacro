@@ -38,6 +38,7 @@
   <link name="${prefix}base_link">
   </link>
 
+  <!-- Chassis -->
   <joint name="${prefix}base_link_to_chassis" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0" />
     <parent link="${prefix}base_link"/>
@@ -81,6 +82,7 @@
 
   <xacro:chassis name="${prefix}chassis" color="${color}"/>
 
+  <!-- Left Wheel -->
   <joint name="${prefix}chassis_to_left_wheel" type="continuous">  
     <origin rpy="1.57 0 0" xyz="0.0 0.150 -0.0775"/>
     <parent link="${prefix}chassis"/>
@@ -92,6 +94,7 @@
 
   <xacro:wheel wheel_name="${prefix}left_wheel" />
 
+  <!-- Right Wheel -->
   <joint name="${prefix}chassis_to_right_wheel" type="continuous">  
     <origin rpy="1.57 0 0" xyz="0.0 -0.150 -0.0775"/>
     <parent link="${prefix}chassis"/>
@@ -301,6 +304,7 @@
     </inertial>
   </link>
 
+  <!-- Cup Holder Tray -->
   <joint name="${prefix}chassis_to_cup_holder_tray" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.3425" />
     <parent link="${prefix}base_link"/>
@@ -309,6 +313,7 @@
 
   <xacro:cup_holder_tray cup_holder_tray_name="${prefix}cup_holder_tray" color="${color}"/>
 
+  <!-- Standoff Rod Back Left -->
   <joint name="${prefix}chassis_to_standoff_rod_back_left" type="fixed">
     <origin rpy="0 0 0" xyz="-0.030 0.140 0.1875" />
     <parent link="${prefix}chassis"/>
@@ -317,6 +322,7 @@
 
   <xacro:standoff standoff_name="${prefix}standoff_rod_back_left"/>
 
+  <!-- Standoff Rod Back Right -->
   <joint name="${prefix}chassis_to_standoff_rod_back_right" type="fixed">
     <origin rpy="0 0 0" xyz="-0.030 -0.140 0.1875" />
     <parent link="${prefix}chassis"/>
@@ -325,6 +331,7 @@
 
   <xacro:standoff standoff_name="${prefix}standoff_rod_back_right"/>
 
+  <!-- Standoff Rod Front Left -->
   <joint name="${prefix}chassis_to_standoff_rod_front_left" type="fixed">
     <origin rpy="0 0 0" xyz="0.030 0.140 0.1875"/>
     <parent link="${prefix}chassis"/>
@@ -333,6 +340,7 @@
 
   <xacro:standoff standoff_name="${prefix}standoff_rod_front_left"/>  
 
+  <!-- Standoff Rod Front Right -->
   <joint name="${prefix}chassis_to_standoff_rod_front_right" type="fixed">
     <origin rpy="0 0 0" xyz="0.030 -0.140 0.1875"/>
     <parent link="${prefix}chassis"/>
